@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+  <h1> upload your pic! </h1>
+
+  <%= form_for @photo do |f| %>
+    <%= f.hidden_field :image, value: @photo.cached_image_data %>
+    <%= f.file_field :image %>
+    <%= f.submit %>
+  <% end %>
+
+  <% @photos.each do |photo| %>
+    <%= image_tag photo.image_url %>
+  <% end %>
+
+</body>
+</html>
